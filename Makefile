@@ -35,4 +35,11 @@ $(BIN)adjlist.o: $(SRC)adjlist.c $(INC)adjlist.h $(INC)histg_lib.h
 clean:
 	rm -f */*.o *.out
 
+winter: $(BIN)winter.o $(BIN)histg_lib.o $(BIN)spanning_tree.o $(BIN)timer.o $(BIN)adjlist.o
+	$(CC) $(CFLAGS) $(BIN)winter.o $(BIN)histg_lib.o $(BIN)spanning_tree.o $(BIN)timer.o $(BIN)adjlist.o \
+		-o $(BIN)winter $(LIBS)
+
+$(BIN)winter.o: $(SRC)winter.c
+	$(CC) $(CFLAGS) -c $(SRC)winter.c -o $@
+
 $(info $(shell mkdir -p $(BIN)))
